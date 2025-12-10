@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Workouts - <%=appData.appName%></title>
+        <link rel="stylesheet" href="/main.css">
+    </head>
+    <body>
+        <%- include ('partials/navbar.ejs') %>
+        <%- include('partials/flash.ejs') %>
+
+        <h1 class="table-title">Log Workouts</h1>
+        <div class="logWorkout-container">
+            <form method="post" action="workoutAdded" class="logWorkout-form">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="type">Workout Type:</label>
+                <input type="text" id="type" name="type" required>
+
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" name="duration" required>
+
+                <label for="calories">Calories Burned:</label>
+                <input type="number" id="calories" name="calories" required>
+
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+
+                <button type="submit">Add Workout</button>
+            </form>
+        </div>
+    </body>
+</html>

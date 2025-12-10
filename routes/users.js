@@ -90,6 +90,7 @@ router.post('/loggedin', function(req, res, next) {
                 if (passwordMatch) {
                     // Passwords match
                     req.session.user = {
+                        userid: results[0].id,
                         username: results[0].username,
                         firstName: results[0].firstName,
                         lastName: results[0].lastName,

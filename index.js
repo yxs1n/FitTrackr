@@ -65,6 +65,9 @@ app.use('/', mainRoutes);
 const usersRoutes = require('./routes/users');
 app.use('/users', usersRoutes);
 
+const workoutsRoutes = require('./routes/workouts');
+app.use('/workouts', workoutsRoutes);
+
 // Start Server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
