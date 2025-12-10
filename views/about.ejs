@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><%=appData.appName%></title>
+        <title>About - <%=appData.appName%></title>
         <link rel="stylesheet" href="/main.css">
     </head>
     <body>
         <nav class="navbar">
             <div class="navbar-container">
-                <a href="/" class="nav-logo" id="selected"><%=appData.appName%></a>
+                <a href="/" class="nav-logo"><%=appData.appName%></a>
                 <div class="navbar-links">
-                    <a href="/about">About</a>
+                    <a href="/about" id="selected">About</a>
                 </div>
 
                 <div class="navbar-auth">
@@ -19,6 +19,8 @@
 
             </div>
         </nav>
-        <h1>Welcome to <%=appData.appName%></h1>
+        <h1>About <%=appData.appName%></h1>
+        <p><%=appData.appName%> is a fitness tracking application designed to help users monitor their workouts and progress over time. Our mission is to provide an easy-to-use platform for fitness enthusiasts of all levels.</p>
+        
     </body>
 </html>

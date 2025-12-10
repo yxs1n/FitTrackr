@@ -1,0 +1,132 @@
+body {
+    background-color: #5f5f5f;
+    color: white;
+}
+
+/*  ==============
+    Navbar styling
+    ============== */
+.navbar {
+    background-color: #333;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+/* Logo */
+.nav-logo {
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Left links */
+.navbar-links {
+    display: flex;
+}
+
+/* Right auth buttons */
+.navbar-auth {
+    display: flex;
+    margin-left: auto;   /* ✅ pushes to far right */
+}
+
+/* All navbar links */
+.navbar a {
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+.navbar a:hover {
+    background-color: #a2003e;
+    border-radius: 5px;
+    color: black;
+}
+
+#selected {
+    background-color: #a2003e;
+    border-radius: 5px;
+    color: black;
+}
+
+/*  ==========================
+    Registration Form Styling
+    ========================== */
+.register-container {
+    background-color: #3b3b3b;
+    margin: 100px auto;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-form {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.register-form label {
+    margin-top: 10px;
+    color: white;
+}
+
+.register-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #a2003e;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*  ==========================
+    Log in Form Styling
+    ========================== */
+.login-container {
+    background-color: #3b3b3b;
+    margin: 100px auto;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-form label {
+    margin-top: 10px;
+    color: white;
+}
+
+.login-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #a2003e;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

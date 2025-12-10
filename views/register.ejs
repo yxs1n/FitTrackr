@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register For <%=appData.appName%></title>
+        <link rel="stylesheet" href="/main.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="/" class="nav-logo"><%=appData.appName%></a>
+                <div class="navbar-links">
+                    <a href="/about">About</a>
+                </div>
+
+                <div class="navbar-auth">
+                    <a href="login" class="nav-login">Login</a>
+                    <a href="register" class="nav-register" id="selected">Register</a>
+                </div>
+            </div>
+        </nav>
+        <div class="register-container">
+            <h1>Register</h1>
+            <form action="registered" method="post" class="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="first">First Name:</label>
+                <input type="text" name="first" id="first">
+
+                <label for="last">Last Name:</label>
+                <input type="text" name="last" id="last">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </body>
+</html>
