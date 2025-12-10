@@ -5,20 +5,10 @@
         <link rel="stylesheet" href="/main.css">
     </head>
     <body>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="/" class="nav-logo" id="selected"><%=appData.appName%></a>
-                <div class="navbar-links">
-                    <a href="/about">About</a>
-                </div>
+        <%- include ('partials/navbar.ejs') %>
+        <%- include('partials/flash.ejs') %>
 
-                <div class="navbar-auth">
-                    <a href="users/login" class="nav-login">Login</a>
-                    <a href="users/register" class="nav-register">Register</a>
-                </div>
-
-            </div>
-        </nav>
         <h1>Welcome to <%=appData.appName%></h1>
+
     </body>
 </html>

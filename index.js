@@ -39,6 +39,25 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Make user data available in all views
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
+// Middleware to set current path
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
+// Flash message middleware
+app.use((req, res, next) => {
+  res.locals.flash = req.session.flash || null;
+  delete req.session.flash; // ensures it displays once
+  next();
+});
+
 //Routes
 const mainRoutes = require('./routes/main');
 app.use('/', mainRoutes);

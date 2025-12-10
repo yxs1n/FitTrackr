@@ -49,7 +49,7 @@ body {
     color: black;
 }
 
-#selected {
+.navbar a.active, .nav-logo.active {
     background-color: #a2003e;
     border-radius: 5px;
     color: black;
@@ -129,4 +129,40 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/*  ==========================
+    Flash Message Styling
+    ========================== */
+.flash {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeOut 4s forwards;
+  pointer-events: none;
+}
+
+.flash-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.flash-info {
+  background-color: #2196F3;
+  color: white;
+}
+
+.flash-error {
+  background-color: #f44336;
+  color: white;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }

@@ -5,19 +5,9 @@
         <link rel="stylesheet" href="/main.css">
     </head>
     <body>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="/" class="nav-logo"><%=appData.appName%></a>
-                <div class="navbar-links">
-                    <a href="/about">About</a>
-                </div>
+        <%- include ('partials/navbar.ejs') %>
+        <%- include('partials/flash.ejs') %>
 
-                <div class="navbar-auth">
-                    <a href="login" class="nav-login">Login</a>
-                    <a href="register" class="nav-register" id="selected">Register</a>
-                </div>
-            </div>
-        </nav>
         <div class="register-container">
             <h1>Register</h1>
             <form action="registered" method="post" class="register-form">

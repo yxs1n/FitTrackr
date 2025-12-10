@@ -12,12 +12,12 @@ bcrypt.hash(defaultPassword, 10, (err, hash) => {
     console.log(hash);
 });
 
-const redirectLogin = (req, res, next) => {
-    if (!req.session.userId) {
-        res.redirect('./login'); // redirect to login page
-    } else {
-        next(); // move to the next middleware function
-    }
+// Middleware to check if user is logged in
+function requireLogin(req, res, next) {
+  if (!req.session.user) {
+    return res.redirect('/users/login');
+  }
+  next();
 }
 
 // Register Route
@@ -40,13 +40,21 @@ router.post('/registered', [check('username').notEmpty().withMessage('Username i
             let newrecord = [req.body.username, req.body.first, req.body.last, req.body.email, hash];
             db.query(sqlquery, newrecord, (err, results) => {
                 if (err) {
-                    res.send('Error registering user: ' + err);
+                    // Handle duplicate username or email error
+                    req.session.flash = {
+                        type: 'error',
+                        message: 'Error during registration. Please try again.'
+                    };
+                    res.redirect('/users/register');
                 } else {
                     console.log('User registered: ' + req.body.username);
                     // Confirmation message
-                    result = 'Hello ' + req.sanitize(req.body.first) + ' ' + req.sanitize(req.body.last) + ', you are now registered! We will send an email to you at ' + req.body.email
-                    result += ' Your password is: ' + req.sanitize(plainPassword) + ' and your hashed password is: ' + hash
-                    res.send(result);
+                    req.session.flash = {
+                        type: 'success',
+                        message: 'Registration successful. You can now log in.'
+                    };
+                    // Redirect to login page
+                    res.redirect('/users/login');
                 }
             });
         });
@@ -56,6 +64,66 @@ router.post('/registered', [check('username').notEmpty().withMessage('Username i
 // Login Route
 router.get('/login', (req, res, next) => {
     res.render('login.ejs')
+});
+
+router.post('/loggedin', function(req, res, next) {
+    const username = req.body.username;
+
+    let sqlquery = 'SELECT * FROM users WHERE username = ?';
+    db.query(sqlquery, [username], (err, results) => {
+        if (err) {
+            next(err);
+        }
+        if (results.length === 0) {
+            // No such user
+            req.session.flash = {
+                type: 'error',
+                message: 'No such user found.'
+            };
+            res.redirect('/users/login');
+        } else {
+            const hashedPassword = results[0].hashedPassword;
+            bcrypt.compare(req.body.password, hashedPassword, function(err, passwordMatch) {
+                if (err) {
+                    next(err);
+                }
+                if (passwordMatch) {
+                    // Passwords match
+                    req.session.user = {
+                        username: results[0].username,
+                        firstName: results[0].firstName,
+                        lastName: results[0].lastName,
+                    }
+                    // Set flash message
+                    req.session.flash = {
+                        type: 'success',
+                        message: 'You have logged in successfully.'
+                    };
+                    // Go back to home page
+                    res.redirect('/');
+                } else {
+                    // Passwords don't match
+                    req.session.flash = {
+                        type: 'error',
+                        message: 'Incorrect password.'
+                    };
+                    res.redirect('/users/login');
+                }
+            });
+        }
+    });
+});
+
+// Logout Route
+router.get('/logout', (req, res) => {
+    delete req.session.user;
+    // Set flash message
+    req.session.flash = {
+            type: 'info',
+            message: 'You have been logged out successfully.'
+        };
+
+    res.redirect('/');
 });
 
 module.exports = router;

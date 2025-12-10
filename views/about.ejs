@@ -5,20 +5,9 @@
         <link rel="stylesheet" href="/main.css">
     </head>
     <body>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="/" class="nav-logo"><%=appData.appName%></a>
-                <div class="navbar-links">
-                    <a href="/about" id="selected">About</a>
-                </div>
+        <%- include ('partials/navbar.ejs') %>
+        <%- include('partials/flash.ejs') %>
 
-                <div class="navbar-auth">
-                    <a href="users/login" class="nav-login">Login</a>
-                    <a href="users/register" class="nav-register">Register</a>
-                </div>
-
-            </div>
-        </nav>
         <h1>About <%=appData.appName%></h1>
         <p><%=appData.appName%> is a fitness tracking application designed to help users monitor their workouts and progress over time. Our mission is to provide an easy-to-use platform for fitness enthusiasts of all levels.</p>
         
