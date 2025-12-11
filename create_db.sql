@@ -1,8 +1,8 @@
 # Create database script for Fittrackr
 
 -- Create the database
-CREATE DATABASE IF NOT EXISTS fittrackr;
-USE fittrackr;
+CREATE DATABASE IF NOT EXISTS health;
+USE health;
 
 -- Create users table
 CREATE TABLE users (
@@ -29,5 +29,5 @@ CREATE TABLE workouts (
 
 -- Create application user
 
-CREATE USER IF NOT EXISTS 'fittrackr_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
-GRANT ALL PRIVILEGES ON fittrackr.* TO 'fittrackr_app'@'localhost';
+CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
+GRANT ALL PRIVILEGES ON health.* TO 'health_app'@'localhost';
