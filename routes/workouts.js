@@ -11,7 +11,7 @@ function requireLogin(req, res, next) {
       type: 'error',
       message: 'You must be logged in to access that page.'
     };
-    if (req.path === 'search' || req.path === 'add'){
+    if (req.path === '/search' || req.path === '/add'){
         return res.redirect('../users/login');
     }
     return res.redirect('./users/login');
