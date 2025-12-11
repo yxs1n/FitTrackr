@@ -1,0 +1,7 @@
+home="https://doc.gold.ac.uk/usr/409/"
+about="https://doc.gold.ac.uk/usr/409/about"
+register="https://doc.gold.ac.uk/usr/409/users/register"
+login="https://doc.gold.ac.uk/usr/409/users/login"
+workouts="https://doc.gold.ac.uk/usr/409/workouts"
+addWorkouts="https://doc.gold.ac.uk/usr/409/workouts/add"
+searchWorkouts="https://doc.gold.ac.uk/usr/409/workouts/search"
