@@ -19,7 +19,15 @@
                 class="<%= currentPath === '/workouts/add' ? 'active' : '' %>">
                 Log Workout
             </a>
+            <a href="/workouts/search"
+               class="<%= currentPath === '/workouts/search' ? 'active' : '' %>">
+               Search Workouts
+            </a>
         </div>
+
+        <form action="/workouts/search" method="get" class="nav-search">
+            <input type="text" name="q" placeholder="Search workouts..." required>
+        </form>
 
         <div class="navbar-auth">
             <% if (user) { %>

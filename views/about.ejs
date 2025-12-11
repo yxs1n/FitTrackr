@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>About - <%=appData.appName%></title>
-        <link rel="stylesheet" href="/main.css">
-    </head>
-    <body>
-        <%- include ('partials/navbar.ejs') %>
-        <%- include('partials/flash.ejs') %>
+<head>
+    <title>About - <%= appData.appName %></title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <%- include('partials/flash.ejs') %>
 
-        <h1>About <%=appData.appName%></h1>
-        <p><%=appData.appName%> is a fitness tracking application designed to help users monitor their workouts and progress over time. Our mission is to provide an easy-to-use platform for fitness enthusiasts of all levels.</p>
-        
-    </body>
+    <div class="about-container">
+        <h1>About FitTrackr</h1>
+
+        <p>
+            FitTrackr is a simple and clean fitness tracking application designed to help users
+            log their workouts and keep track of their progress over time. Whether you're lifting,
+            running, or doing any other activity, FitTrackr makes it easy to record what you’ve done.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Secure user login and registration</li>
+            <li>Log workouts manually with type, duration, calories, and notes</li>
+            <li>View all your workout history in one place</li>
+            <li>Search through your workouts quickly and easily</li>
+            <li>See your most recent workout on the homepage</li>
+            <li>Data stored securely in a MySQL database</li>
+        </ul>
+
+        <h2>How to Use</h2>
+        <p>
+            Create an account or log in, then start adding your workouts using the Add Workout page.
+            You can browse all your workouts through the Workouts page, or use the search bar to find
+            specific entries.
+        </p>
+
+        <p class="about-footer">
+            FitTrackr was created as part of the Dynamic Web Applications module at Goldsmiths.
+        </p>
+    </div>
+</body>
 </html>

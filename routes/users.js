@@ -15,6 +15,10 @@ bcrypt.hash(defaultPassword, 10, (err, hash) => {
 // Middleware to check if user is logged in
 function requireLogin(req, res, next) {
   if (!req.session.user) {
+    req.session.flash = {
+      type: 'error',
+      message: 'You must be logged in to access that page.'
+    };
     return res.redirect('/users/login');
   }
   next();

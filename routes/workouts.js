@@ -7,6 +7,10 @@ const {check, validationResult} = require('express-validator');
 // Middleware to check if user is logged in
 function requireLogin(req, res, next) {
   if (!req.session.user) {
+    req.session.flash = {
+      type: 'error',
+      message: 'You must be logged in to access that page.'
+    };
     return res.redirect('/users/login');
   }
   next();
@@ -67,8 +71,29 @@ router.post('/workoutAdded', requireLogin, [
     }
 });
 
-router.get('/search', requireLogin, (req, res, next) => {
-    res.render('search_workouts.ejs');
+// Search Workouts
+router.get('/search', requireLogin, (req, res) => {
+    const query = req.query.q;
+
+    // If no search term submitted, show empty page or message
+    if (!query) {
+        return res.render('search_workouts.ejs', { workouts: [], searchTerm: "" });
+    }
+
+    let sqlquery = `
+        SELECT * FROM workouts
+        WHERE user_id = ?
+        AND (type LIKE ? OR notes LIKE ?)
+        ORDER BY date DESC
+    `;
+
+    let searchWildcard = `%${query}%`;
+
+    db.query(sqlquery, [req.session.user.userid, searchWildcard, searchWildcard], (err, results) => {
+        if (err) throw err;
+
+        res.render('search_workouts.ejs', { workouts: results, searchTerm: query });
+    });
 });
 
 module.exports = router;
