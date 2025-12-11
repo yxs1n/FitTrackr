@@ -11,7 +11,7 @@ function requireLogin(req, res, next) {
       type: 'error',
       message: 'You must be logged in to access that page.'
     };
-    return res.redirect('/users/login');
+    return res.redirect('../users/login');
   }
   next();
 }
@@ -45,7 +45,7 @@ router.post('/workoutAdded', requireLogin, [
             type: 'error',
             message: errors.array().map(err => err.msg).join(' ')
         };
-        return res.redirect('/workouts/add');
+        return res.redirect('./workouts/add');
     } else {
         // No validation errors, proceed to insert workout
         let sqlquery = 'INSERT INTO workouts (user_id, date, type, duration, calories, notes) VALUES (?, ?, ?, ?, ?, ?)';
@@ -66,7 +66,7 @@ router.post('/workoutAdded', requireLogin, [
                 type: 'success',
                 message: 'Workout added successfully!'
             };
-            res.redirect('/workouts');
+            res.redirect('./workouts');
         });
     }
 });
